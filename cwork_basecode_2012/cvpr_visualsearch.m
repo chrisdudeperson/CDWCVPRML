@@ -44,7 +44,7 @@ distance=sortrows(distance,1);  % sort the results
 %% 4) Visualise the results
 %% These may be a little hard to see using imgshow
 %% If you have access, try using imshow(outdisplay) or imagesc(outdisplay)
-resultTotal=15; % Show top 15 results
+resultTotal=10; % Show top 15 results
 distance=distance(1:resultTotal,:);
 outdisplay=[];
 for i=1:size(distance,1)
@@ -53,5 +53,5 @@ for i=1:size(distance,1)
    img=img(1:81,:,:); % crop image to uniform size vertically (some MSVC images are different heights)
    outdisplay=[outdisplay img];
 end
-imgshow(outdisplay);
+imshow(outdisplay);
 axis off;
