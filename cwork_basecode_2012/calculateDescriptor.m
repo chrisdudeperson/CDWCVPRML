@@ -1,4 +1,4 @@
-function F=extractRandom(img)
+function F=calculateDescriptor(img)
 
 red = img(:,:,1);
 red = reshape(red,1,[]);
