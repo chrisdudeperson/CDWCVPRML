@@ -6,7 +6,7 @@ clear all;
 DATASET_FOLDER = '/Users/chriswillis10/Documents/CVPR/MSRC_ObjCategImageDatabase_v2';
 DESCRIPTOR_FOLDER = '/Users/chriswillis10/Documents/CVPR/descriptors';
 DESCRIPTOR_SUBFOLDER='globalRGBhisto';
-
+sampleImg = 445;
 
 descriptorArray=[];
 fileArray=cell(1,0);
@@ -27,7 +27,7 @@ end
 
 % Pick an image to query
 imgCount=size(descriptorArray,1);    
-queryimg=floor(1*imgCount);   
+queryimg=floor(sampleImg);   
 
 
 % Calcuates distance between the query descriptor and all other image
@@ -44,14 +44,24 @@ distance=sortrows(distance,1);  % sort the results
 %% 4) Visualise the results
 %% These may be a little hard to see using imgshow
 %% If you have access, try using imshow(outdisplay) or imagesc(outdisplay)
-resultTotal=10; % Show top 15 results
+resultTotal=591; % Show top 15 results
 distance=distance(1:resultTotal,:);
 outdisplay=[];
 for i=1:size(distance,1)
+   imageID = distance(i,2);
+   temp(:,i) = strsplit(allFiles(imageID).name, '_');
+   fileCategory(i) = str2double(temp(1,i)); 
    img=imread(fileArray{distance(i,2)});
    img=img(1:2:end,1:2:end,:); % make image a quarter size
    img=img(1:81,:,:); % crop image to uniform size vertically (some MSVC images are different heights)
    outdisplay=[outdisplay img];
 end
+
+% PR Curve
+[precision, recall] = computePrecisionRecall(fileCategory);
+
+figure
+plot(recall, precision);
+figure
 imshow(outdisplay);
 axis off;
