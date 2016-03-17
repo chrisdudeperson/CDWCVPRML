@@ -6,7 +6,7 @@ clear all;
 DATASET_FOLDER = '/Users/chriswillis10/Documents/CVPR/MSRC_ObjCategImageDatabase_v2';
 DESCRIPTOR_FOLDER = '/Users/chriswillis10/Documents/CVPR/descriptors';
 DESCRIPTOR_SUBFOLDER='globalRGBhisto';
-sampleImg = 445;
+sampleImg = 310;
 
 descriptorArray=[];
 fileArray=cell(1,0);
@@ -44,7 +44,7 @@ distance=sortrows(distance,1);  % sort the results
 %% 4) Visualise the results
 %% These may be a little hard to see using imgshow
 %% If you have access, try using imshow(outdisplay) or imagesc(outdisplay)
-resultTotal=591; % Show top 15 results
+resultTotal=10; % Show top 15 results
 distance=distance(1:resultTotal,:);
 outdisplay=[];
 for i=1:size(distance,1)
