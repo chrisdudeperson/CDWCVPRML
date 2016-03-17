@@ -23,12 +23,13 @@ function g=gridImage(gridImageNorm, gridSize)
 %              disp(sprintf('Width Start: %d  Width End: %d', cellWidthStart, cellWidthEnd));
 %              disp(sprintf('Height Start: %d  Height End: %d', cellHeightStart, cellHeightEnd));
              imageCell = gridImageNorm(cellHeightStart:cellHeightEnd,cellWidthStart:cellWidthEnd,:);
-             g = [g, calculateDescriptor(imageCell)];
-             
+%              g = [g, ComputeRGBHistogram(imageCell,4)];
+             g = [g, calculateTexture(imageCell,4)];
+               g = [g, calculateDescriptor(imageCell)];
               cellWidthStart = cellWidthStart + cellWidthSize;
              if((remainingWidth ~= 0) && (j == gridSize))
                  cellWidthEnd = cellWidthEnd + cellWidthSize + remainingWidth;
-%                   disp(sprintf('-------FIRST IF------'));
+%                    disp(sprintf('-------FIRST IF------'));
              else
                 cellWidthEnd = cellWidthEnd + cellWidthSize;
              end
