@@ -17,7 +17,7 @@ for i=1:length(allFiles)
     imgPath=([DATASET_FOLDER,'/Images/',fileName]);
     imgNorm=double(imread(imgPath));
     outputFile=[OUT_FOLDER,'/',OUT_SUBFOLDER,'/',fileName(1:end-4),'.mat'];%replace .bmp with .mat
-    F=gridImage(imgNorm, 16);
+    F=gridImage(imgNorm, 8);
 %     F = ComputeRGBHistogram(imgNorm,4);
     F = F./255;
     save(outputFile,'F');

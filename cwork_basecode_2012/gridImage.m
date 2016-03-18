@@ -25,7 +25,7 @@ function g=gridImage(gridImageNorm, gridSize)
              imageCell = gridImageNorm(cellHeightStart:cellHeightEnd,cellWidthStart:cellWidthEnd,:);
 %              g = [g, ComputeRGBHistogram(imageCell,4)];
              g = [g, calculateTexture(imageCell,4)];
-               g = [g, calculateDescriptor(imageCell)];
+%                g = [g, calculateDescriptor(imageCell)];
               cellWidthStart = cellWidthStart + cellWidthSize;
              if((remainingWidth ~= 0) && (j == gridSize))
                  cellWidthEnd = cellWidthEnd + cellWidthSize + remainingWidth;
